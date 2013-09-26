@@ -1,0 +1,11 @@
+﻿@using TestRazorTemplates.Html
+@model TestRazorTemplates.Models.SimpleModel
+@{
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+In Main View: @Model.Name
+Before Partial
+@Html.Partial("SimplePartial", new { Name = "Partial" })
+After Partial
+Url: @Url.Content("~/images/logo.gif")
+Absolute Url: @Url.ContentAbsolute("~/images/logo.gif")

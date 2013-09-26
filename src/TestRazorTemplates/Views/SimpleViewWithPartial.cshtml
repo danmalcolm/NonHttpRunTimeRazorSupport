@@ -1,0 +1,6 @@
+﻿@model TestRazorTemplates.Models.SimpleModel
+
+In Main View: @Model.Name
+Before Partial
+@Html.Partial("SimplePartial", new { Name = "Partial" })
+After Partial
