@@ -9,7 +9,7 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace TestRazorTemplates.Views
+namespace EmailDemoTemplates.Views.Shared
 {
     using System;
     using System.Collections.Generic;
@@ -27,65 +27,59 @@ namespace TestRazorTemplates.Views
     using System.Web.UI;
     using System.Web.WebPages;
     
-    #line 1 "..\..\Views\SimpleViewWithLayout.cshtml"
-    using TestRazorTemplates.Html;
+    #line 1 "..\..\Views\Shared\PlainTextLayout.cshtml"
+    using EmailDemoTemplates.Html;
     
     #line default
     #line hidden
     
     [System.CodeDom.Compiler.GeneratedCodeAttribute("RazorGenerator", "2.0.0.0")]
-    [System.Web.WebPages.PageVirtualPathAttribute("~/Views/SimpleViewWithLayout.cshtml")]
-    public partial class SimpleViewWithLayout : System.Web.Mvc.WebViewPage<TestRazorTemplates.Models.SimpleModel>
+    [System.Web.WebPages.PageVirtualPathAttribute("~/Views/Shared/PlainTextLayout.cshtml")]
+    public partial class PlainTextLayout : System.Web.Mvc.WebViewPage<dynamic>
     {
-        public SimpleViewWithLayout()
+        public PlainTextLayout()
         {
         }
         public override void Execute()
         {
+WriteLiteral("Super Funky Website\r\n--------------------------------------\r\n");
+
             
-            #line 3 "..\..\Views\SimpleViewWithLayout.cshtml"
-  
-    Layout = "~/Views/Shared/_Layout.cshtml";
+            #line 4 "..\..\Views\Shared\PlainTextLayout.cshtml"
+Write(RenderBody());
 
             
             #line default
             #line hidden
-WriteLiteral("\r\nIn Main View: ");
+WriteLiteral("\r\n--------------------------------------\r\nFooter:\r\nTerms and conditions: ");
 
             
-            #line 6 "..\..\Views\SimpleViewWithLayout.cshtml"
-         Write(Model.Name);
-
-            
-            #line default
-            #line hidden
-WriteLiteral("\r\nBefore Partial\r\n");
-
-            
-            #line 8 "..\..\Views\SimpleViewWithLayout.cshtml"
-Write(Html.Partial("SimplePartial", new { Name = "Partial" }));
+            #line 7 "..\..\Views\Shared\PlainTextLayout.cshtml"
+                 Write(Url.Absolute("~/tnc"));
 
             
             #line default
             #line hidden
-WriteLiteral("\r\nAfter Partial\r\nUrl: ");
+WriteLiteral("\r\nUnsubscribe: ");
 
             
-            #line 10 "..\..\Views\SimpleViewWithLayout.cshtml"
-Write(Url.Content("~/images/logo.gif"));
-
-            
-            #line default
-            #line hidden
-WriteLiteral("\r\nAbsolute Url: ");
-
-            
-            #line 11 "..\..\Views\SimpleViewWithLayout.cshtml"
-         Write(Url.Absolute("~/images/logo.gif"));
+            #line 8 "..\..\Views\Shared\PlainTextLayout.cshtml"
+        Write(Url.Absolute("~/unsubscribe"));
 
             
             #line default
             #line hidden
+WriteLiteral("\r\nEmail sent on ");
+
+            
+            #line 9 "..\..\Views\Shared\PlainTextLayout.cshtml"
+         Write(DateTime.Now.ToString());
+
+            
+            #line default
+            #line hidden
+WriteLiteral(" by Facepack\r\n");
+
         }
     }
 }

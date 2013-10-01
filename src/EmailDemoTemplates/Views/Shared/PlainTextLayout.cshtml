@@ -1,0 +1,9 @@
+﻿@using EmailDemoTemplates.Html
+Super Funky Website
+--------------------------------------
+@RenderBody()
+--------------------------------------
+Footer:
+Terms and conditions: @Url.Absolute("~/tnc")
+Unsubscribe: @Url.Absolute("~/unsubscribe")
+Email sent on @DateTime.Now.ToString() by Facepack

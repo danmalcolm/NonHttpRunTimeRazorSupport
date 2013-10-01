@@ -52,7 +52,7 @@
   <ItemGroup>
     <Compile Include="PrecompiledView.cs" />
     <Compile Include="DefaultViewPageActivator.cs" />
-    <Compile Include="MvcViewPageExecutor.cs" />
+    <Compile Include="ViewRenderer.cs" />
     <Compile Include="OfflineBrowserCapabilities.cs" />
     <Compile Include="OfflineHttpContext.cs" />
     <Compile Include="OfflineHttpRequest.cs" />

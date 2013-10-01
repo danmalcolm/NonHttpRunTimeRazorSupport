@@ -14,41 +14,51 @@ namespace NonHttpRuntimeRazorSupport
     /// outside of the context of a web application, allowing templates to be used within a Windows 
     /// service, console app or any other "offline" application.
     /// 
-    /// Creating more than one instance of MvcViewPageExecutor to executed precompiled views from 
+    /// Creating more than one instance of ViewRenderer to execute precompiled views from 
     /// different assemblies hasn't been fully tested. It is likely to result in views from 
     /// different assemblies being used when rendering partials and layouts. If you really need to
     /// do this, each assembly's views should be nested within a uniquely named folder so that view
     /// paths do not overlap, e.g. ~/Views/Something/MyView1.cshtml (Assembly1), 
     /// ~/Views/SomethingElse/MyView1.cshtml (Assembly2) etc.
     /// </summary>
-    public class MvcViewPageExecutor
+    public class ViewRenderer
     {
-        private static readonly ConcurrentDictionary<Assembly, MvcViewPageExecutor> Cache
-            = new ConcurrentDictionary<Assembly, MvcViewPageExecutor>();
+        private static readonly ConcurrentDictionary<Assembly, ViewRenderer> Cache
+            = new ConcurrentDictionary<Assembly, ViewRenderer>();
 
         /// <summary>
-        /// Gets instance of MvcViewPageExecutor for executing views in the specified Assembly 
+        /// Gets instance of ViewRenderer for executing views in the Assembly of
+        /// the specified type T.
+        /// </summary>
+        /// <returns></returns>
+        public static ViewRenderer ForAssemblyOf<T>()
+        {
+            return ForAssembly(typeof(T).Assembly);
+        }
+
+        /// <summary>
+        /// Gets instance of ViewRenderer for executing views in the specified Assembly 
         /// </summary>
         /// <param name="assembly"></param>
         /// <returns></returns>
-        public static MvcViewPageExecutor ForAssembly(Assembly assembly)
+        public static ViewRenderer ForAssembly(Assembly assembly)
         {
             return Cache.GetOrAdd(assembly, a =>
             {
                 var viewEngine = new PrecompiledViewEngine(a);
                 ViewEngines.Engines.Insert(0, viewEngine);
-                return new MvcViewPageExecutor(viewEngine);
+                return new ViewRenderer(viewEngine);
             });
         }
 
         private readonly PrecompiledViewEngine viewEngine;
         
-        public MvcViewPageExecutor(PrecompiledViewEngine viewEngine)
+        public ViewRenderer(PrecompiledViewEngine viewEngine)
         {
             this.viewEngine = viewEngine;
         }
 
-        public string Execute<T>(object model, Uri baseUri)
+        public string RenderView<T>(object model, Uri baseUri)
             where T : WebViewPage
         {
             var attribute = typeof(T).GetCustomAttribute<PageVirtualPathAttribute>();
@@ -57,10 +67,10 @@ namespace NonHttpRuntimeRazorSupport
                 throw new ArgumentException(string.Format("{0} does not appear to be a pre-compiled view. The PageVirtualPathAttribute could not be found", typeof(T)));
             }
             string virtualPath = attribute.VirtualPath;
-            return Execute(virtualPath, model, baseUri);
+            return RenderView(virtualPath, model, baseUri);
         }
 
-        public string Execute(string virtualPath, object model, Uri baseUri)
+        public string RenderView(string virtualPath, object model, Uri baseUri)
         {
             var view = viewEngine.CreateViewInstance(virtualPath);
             if (view == null)

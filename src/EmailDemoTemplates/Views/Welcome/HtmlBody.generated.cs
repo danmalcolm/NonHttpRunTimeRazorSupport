@@ -9,7 +9,7 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace TestRazorTemplates.Views
+namespace EmailDemoTemplates.Views.Welcome
 {
     using System;
     using System.Collections.Generic;
@@ -27,48 +27,36 @@ namespace TestRazorTemplates.Views
     using System.Web.UI;
     using System.Web.WebPages;
     
-    #line 1 "..\..\Views\ViewWithLink.cshtml"
-    using TestRazorTemplates.Html;
-    
-    #line default
-    #line hidden
-    
     [System.CodeDom.Compiler.GeneratedCodeAttribute("RazorGenerator", "2.0.0.0")]
-    [System.Web.WebPages.PageVirtualPathAttribute("~/Views/ViewWithLink.cshtml")]
-    public partial class ViewWithLink : System.Web.Mvc.WebViewPage<TestRazorTemplates.Models.SimpleModel>
+    [System.Web.WebPages.PageVirtualPathAttribute("~/Views/Welcome/HtmlBody.cshtml")]
+    public partial class HtmlBody : System.Web.Mvc.WebViewPage<EmailDemoTemplates.Models.WelcomeModel>
     {
-        public ViewWithLink()
+        public HtmlBody()
         {
         }
         public override void Execute()
         {
-WriteLiteral("Name: ");
-
             
-            #line 4 "..\..\Views\ViewWithLink.cshtml"
- Write(Model.Name);
-
-            
-            #line default
-            #line hidden
-WriteLiteral(" ");
-
-            
-            #line 4 "..\..\Views\ViewWithLink.cshtml"
-             Write(Url.Content("some content"));
+            #line 2 "..\..\Views\Welcome\HtmlBody.cshtml"
+  
+    Layout = "~/Views/Shared/HtmlLayout.cshtml";
 
             
             #line default
             #line hidden
-WriteLiteral(", ");
+WriteLiteral("\r\n<p>Hello ");
 
             
-            #line 4 "..\..\Views\ViewWithLink.cshtml"
-                                           Write(Url.Absolute("~/images/logo.gif"));
+            #line 5 "..\..\Views\Welcome\HtmlBody.cshtml"
+    Write(Model.Name);
 
             
             #line default
             #line hidden
+WriteLiteral("</p>\r\n\r\n<p>Welcome to our website.</p>\r\n<p>Here\'s a list of things that we\'re exc" +
+"ited about:</p>\r\n<ul>\r\n    <li>This is nice nice</li>\r\n    <li>This is particula" +
+"rly nice</li>\r\n    <li>This is also nice</li>\r\n</ul>\r\n<p>From everybody</p>\r\n");
+
         }
     }
 }

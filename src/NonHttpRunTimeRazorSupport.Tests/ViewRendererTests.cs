@@ -8,22 +8,22 @@ using TestRazorTemplates.Views.UsingViewStart;
 namespace NonHttpRunTimeRazorSupport.Tests
 {
     [TestFixture]
-    public class MvcViewPageExecutorTests
+    public class ViewRendererTests
     {
-        private MvcViewPageExecutor pageExecutor;
+        private ViewRenderer renderer;
         private static readonly Uri BaseUri = new Uri("http://www.example.com");
 
         [TestFixtureSetUp]
         public void TestFixtureSetUp()
         {
-            pageExecutor = MvcViewPageExecutor.ForAssembly(typeof(SimpleModel).Assembly);
+            renderer = ViewRenderer.ForAssemblyOf<SimpleModel>();
         }
 
         [Test]
         public void RenderingSimpleView()
         {
             var model = new SimpleModel {Name = "Mike "};
-            string content = pageExecutor.Execute<SimpleView>(model, BaseUri);
+            string content = renderer.RenderView<SimpleView>(model, BaseUri);
             Console.Write(content);
         }
 
@@ -31,7 +31,7 @@ namespace NonHttpRunTimeRazorSupport.Tests
         public void RenderingSimpleViewWithLayout()
         {
             var model = new SimpleModel { Name = "Mike " };
-            string content = pageExecutor.Execute<SimpleViewWithLayout>(model, BaseUri);
+            string content = renderer.RenderView<SimpleViewWithLayout>(model, BaseUri);
             Console.Write(content);
         }
 
@@ -39,7 +39,7 @@ namespace NonHttpRunTimeRazorSupport.Tests
         public void RenderingSimpleViewWithLayoutSetByViewStart()
         {
             var model = new SimpleModel { Name = "Mike " };
-            string content = pageExecutor.Execute<SimpleView2>(model, BaseUri);
+            string content = renderer.RenderView<SimpleView2>(model, BaseUri);
             Console.Write(content);
         }
 
@@ -47,7 +47,7 @@ namespace NonHttpRunTimeRazorSupport.Tests
         public void RenderingSimpleViewWithPartial()
         {
             var model = new SimpleModel { Name = "Mike " };
-            string content = pageExecutor.Execute<SimpleViewWithPartial>(model, BaseUri);
+            string content = renderer.RenderView<SimpleViewWithPartial>(model, BaseUri);
             Console.Write(content);
         }
 
@@ -55,7 +55,7 @@ namespace NonHttpRunTimeRazorSupport.Tests
         public void RenderingViewThatGeneratesUrls()
         {
             var model = new SimpleModel { Name = "Mike " };
-            string content = pageExecutor.Execute<ViewWithLink>(model, BaseUri);
+            string content = renderer.RenderView<ViewWithLink>(model, BaseUri);
             Console.Write(content);
         }
 
@@ -65,8 +65,8 @@ namespace NonHttpRunTimeRazorSupport.Tests
 //        public void UsingBackground()
 //        {
 //            string virtualPath = typeof(SimpleViewWithLayout).GetCustomAttribute<PageVirtualPathAttribute>().VirtualPath;
-//            var viewExecutor = new MvcViewPageExecutor(typeof (SimpleViewWithLayout).Assembly);
-//            string result = viewExecutor.Execute(virtualPath, new SimpleModel { Name = "Mike" }, BaseUri);
+//            var viewExecutor = new ViewRenderer(typeof (SimpleViewWithLayout).Assembly);
+//            string result = viewExecutor.RenderView(virtualPath, new SimpleModel { Name = "Mike" }, BaseUri);
 //            Console.Write(result);
 //
 //        }

@@ -14,6 +14,10 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "NonHttpRunTimeRazorSupport"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "NonHttpRunTimeRazorSupport.Tests", "NonHttpRunTimeRazorSupport.Tests\NonHttpRunTimeRazorSupport.Tests.csproj", "{8520E4D1-ACD7-46EC-A5E4-B71BBA64B452}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "EmailDemo", "EmailDemo\EmailDemo.csproj", "{F36991AD-22EC-4445-980A-14A7EF8579DE}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "EmailDemoTemplates", "EmailDemoTemplates\EmailDemoTemplates.csproj", "{62941D42-997C-45F5-9858-E8C810B5F33A}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -32,6 +36,14 @@ Global
 		{8520E4D1-ACD7-46EC-A5E4-B71BBA64B452}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{8520E4D1-ACD7-46EC-A5E4-B71BBA64B452}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{8520E4D1-ACD7-46EC-A5E4-B71BBA64B452}.Release|Any CPU.Build.0 = Release|Any CPU
+		{F36991AD-22EC-4445-980A-14A7EF8579DE}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{F36991AD-22EC-4445-980A-14A7EF8579DE}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{F36991AD-22EC-4445-980A-14A7EF8579DE}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{F36991AD-22EC-4445-980A-14A7EF8579DE}.Release|Any CPU.Build.0 = Release|Any CPU
+		{62941D42-997C-45F5-9858-E8C810B5F33A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{62941D42-997C-45F5-9858-E8C810B5F33A}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{62941D42-997C-45F5-9858-E8C810B5F33A}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{62941D42-997C-45F5-9858-E8C810B5F33A}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

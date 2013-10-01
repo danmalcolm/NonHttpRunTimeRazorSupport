@@ -2,7 +2,7 @@
 using System.Web;
 using System.Web.Mvc;
 
-namespace TestRazorTemplates.Html
+namespace EmailDemoTemplates.Html
 {
     public static class UrlHelperExtensions
     {

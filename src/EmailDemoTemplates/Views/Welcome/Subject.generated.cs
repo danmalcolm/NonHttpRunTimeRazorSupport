@@ -9,7 +9,7 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace TestRazorTemplates.Views
+namespace EmailDemoTemplates.Views.Welcome
 {
     using System;
     using System.Collections.Generic;
@@ -27,48 +27,26 @@ namespace TestRazorTemplates.Views
     using System.Web.UI;
     using System.Web.WebPages;
     
-    #line 1 "..\..\Views\ViewWithLink.cshtml"
-    using TestRazorTemplates.Html;
-    
-    #line default
-    #line hidden
-    
     [System.CodeDom.Compiler.GeneratedCodeAttribute("RazorGenerator", "2.0.0.0")]
-    [System.Web.WebPages.PageVirtualPathAttribute("~/Views/ViewWithLink.cshtml")]
-    public partial class ViewWithLink : System.Web.Mvc.WebViewPage<TestRazorTemplates.Models.SimpleModel>
+    [System.Web.WebPages.PageVirtualPathAttribute("~/Views/Welcome/Subject.cshtml")]
+    public partial class Subject : System.Web.Mvc.WebViewPage<EmailDemoTemplates.Models.WelcomeModel>
     {
-        public ViewWithLink()
+        public Subject()
         {
         }
         public override void Execute()
         {
-WriteLiteral("Name: ");
+WriteLiteral("Hello ");
 
             
-            #line 4 "..\..\Views\ViewWithLink.cshtml"
+            #line 2 "..\..\Views\Welcome\Subject.cshtml"
  Write(Model.Name);
 
             
             #line default
             #line hidden
-WriteLiteral(" ");
+WriteLiteral("\r\n");
 
-            
-            #line 4 "..\..\Views\ViewWithLink.cshtml"
-             Write(Url.Content("some content"));
-
-            
-            #line default
-            #line hidden
-WriteLiteral(", ");
-
-            
-            #line 4 "..\..\Views\ViewWithLink.cshtml"
-                                           Write(Url.Absolute("~/images/logo.gif"));
-
-            
-            #line default
-            #line hidden
         }
     }
 }
