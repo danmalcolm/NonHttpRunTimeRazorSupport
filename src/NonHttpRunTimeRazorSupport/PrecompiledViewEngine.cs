@@ -8,6 +8,10 @@ using System.Web.WebPages;
 
 namespace NonHttpRunTimeRazorSupport
 {
+    // This is based on the PrecompiledMvcEngine class from the RazorGenerator.Mvc project:
+    // http://razorgenerator.codeplex.com/SourceControl/latest#RazorGenerator.Mvc/PrecompiledMvcEngine.cs
+    // Support for non-compiled views has been removed - only precompiled templates are supported
+
     public class PrecompiledViewEngine : VirtualPathProviderViewEngine, IVirtualPathFactory
     {
         private readonly IDictionary<string, Type> mappings;

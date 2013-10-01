@@ -7,8 +7,8 @@ using System.Web.WebPages;
 namespace NonHttpRuntimeRazorSupport
 {
     /// <summary>
-    /// Alternative implementation of System.Web.WebPages.StartPage modified to support execution
-    /// outside of a web application
+    /// Alternative implementation of System.Web.WebPages.StartPage modified to support execution of _ViewStart
+    /// templates outside of a web application
     /// </summary>
     internal class StartPageHelper
     {
