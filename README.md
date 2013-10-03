@@ -4,7 +4,7 @@ NonHttpRunTimeRazorSupport
 Introduction
 ------------
 
-NonHttpRunTimeRazorSupport demonstrates one way to use ASP.Net MVC Razor views to render content outside of the context of a running ASP.Net application. It provides full support for layouts, _ViewStart files, partials, HtmlHelper, Urlhelper etc.
+NonHttpRunTimeRazorSupport demonstrates a way of using ASP.Net MVC Razor views to render content outside of the context of a running ASP.Net application. It provides full support for layouts, _ViewStart files, partials, HtmlHelper, Urlhelper etc.
 
 It uses [RazorGenerator](http://razorgenerator.codeplex.com/) precompiled templates, together with some infrastructure to support execution of WebViewPage template code outside of a web app. 
 
@@ -27,13 +27,14 @@ Here are the steps that you'd need to take to add the necessary infrastructure t
 
 5. Use the following code in your application to render a view:
 
-    var renderer = ViewRenderer.ForAssemblyOf<SimpleModel>();
-    var model = new SimpleModel {Name = "Mike "};
-    string content = renderer.RenderView<SimpleView>(model, new Uri("http://www.example.com"));
+        var baseUri = new Uri("http://www.example.com");
+        var renderer = ViewRenderer.ForAssemblyOf<SimpleModel>();
+        var model = new SimpleModel {Name = "Mike "};    
+        string content = renderer.RenderView<SimpleView>(model, baseUri);
     
   Alternatively, you can specify the path to the view:
              
-    string content = renderer.RenderView("~/Views/SimpleView.cshtml", model, new Uri("http://www.example.com"));
+        string content = renderer.RenderView("~/Views/SimpleView.cshtml", model, baseUri);
 
 Development
 -----------
